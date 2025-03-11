@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation' // Добавляем импорт useRouter
+import { useRouter } from 'next/navigation'
 
 function Hero() {
-  const router = useRouter() // Инициализируем router
+  const router = useRouter()
   const [titleNumber, setTitleNumber] = useState(0)
   const titles = useMemo(() => ['Modern', 'Full-stack', 'Secure', 'Scalable', 'Powerful'], [])
   
@@ -73,7 +73,7 @@ function Hero() {
             <Button 
               size="lg" 
               className="gap-4"
-              onClick={() => router.push('/sign-up')} // Добавляем обработчик события
+              onClick={() => router.push('/sign-up')}
             >
               Get Started <MoveRight className="h-4 w-4" />
             </Button>
