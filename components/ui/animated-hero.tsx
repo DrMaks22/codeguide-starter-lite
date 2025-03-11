@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation' // Добавляем импорт useRouter
 
 function Hero() {
+  const router = useRouter() // Инициализируем router
   const [titleNumber, setTitleNumber] = useState(0)
   const titles = useMemo(() => ['Modern', 'Full-stack', 'Secure', 'Scalable', 'Powerful'], [])
-
+  
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (titleNumber === titles.length - 1) {
@@ -18,13 +20,13 @@ function Hero() {
     }, 2000)
     return () => clearTimeout(timeoutId)
   }, [titleNumber, titles])
-
+  
   return (
     <div className="w-full">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center gap-8 py-20 lg:py-40">
           <div>
-            <a
+            
               href="https://codeguide.dev"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,14 +64,17 @@ function Hero() {
               </span>
               <span className="text-spektr-cyan-50">Starter Kit Lite</span>
             </h1>
-
             <p className="max-w-2xl text-center text-lg leading-relaxed tracking-tight text-muted-foreground md:mt-8 md:text-xl">
               Start building with a modern web application template featuring authentication,
               database integration. Built with Next.js 14, Clerk, Supabase.
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <Button size="lg" className="gap-4">
+            <Button 
+              size="lg" 
+              className="gap-4"
+              onClick={() => router.push('/sign-up')} // Добавляем обработчик события
+            >
               Get Started <MoveRight className="h-4 w-4" />
             </Button>
           </div>
